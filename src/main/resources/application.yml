@@ -1,0 +1,49 @@
+sever:
+  address: localhost
+  port: 8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/daemoing
+    username: daemo
+    password: super-daemo-ing
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+
+  output:
+    ansi:
+      enabled: always
+
+  # Swagger springdoc-ui Configuration
+  springdoc:
+    packages-to-scan: com.daemoing.daemo
+    default-consumes-media-type: application/json;charset=UTF-8
+    default-produces-media-type: application/json;charset=UTF-8
+    swagger-ui:
+      path: index.html            # Swagger UI 경로 => localhost:8080/swagger-ui/index.html
+      tags-sorter: alpha            # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+      operations-sorter: alpha      # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+    api-docs:
+      path: /api-docs/json
+      groups:
+        enabled: true
+    cache:
+      disabled: true
+
+logging.level:
+  org.hibernate.SQL: debug
+
+jwt:
+  secret: VGhpcyBpcyBhIGRlbW8gcHJvamVjdCBmb3IgaW1wbGVtZW50aW5nIGp3dC4=VGhpcyBpcyBhIGRlbW8gcHJvamVjdCBmb3IgaW1wbGVtZW50aW5nIGp3dC4=
+  refresh-token-validity-in-seconds: 1209600 # 14?
+  access-token-validity-in-seconds: 43200 # 12??
+
